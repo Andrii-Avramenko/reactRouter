@@ -9,15 +9,26 @@ import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import NotFound from "./pages/404";
 
-const StyledLink = styled(NavLink)``;
+const StyledLink = styled(NavLink)`
+  color: tomato;
+  margin: 20px;
+  font-size: 24px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &.active {
+    color: green;
+  }
+`;
 
 function App() {
   return (
     <>
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/products">Products</Link>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/about">About</StyledLink>
+        <StyledLink to="/products">Products</StyledLink>
       </nav>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -28,7 +39,7 @@ function App() {
         </Route>
         <Route path="/products" element={<Products />} />
         <Route path="/products/:productId" element={<ProductDetails />} />
-        <Route path="*" element={<NotFound />}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
