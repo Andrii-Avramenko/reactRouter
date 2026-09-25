@@ -1,9 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Mission from "./components/Mission";
-import Team from "./components/team";
-import Reviews from "./components/Reviews";
+
+import { lazy } from "react";
+// import Home from "./pages/Home";
+const Home = lazy(() => import("./pages/Home"))
+// import About from "./pages/About";
+const About = lazy(() => import("./pages/About"))
+// import Mission from "./components/Mission";
+const Mission = lazy(() => import("./components/Mission"))
+// import Team from "./components/team";
+const Team = lazy(() => import("./components/Team"))
+// import Reviews from "./components/Reviews";
+const Reviews = lazy(() => import("./components/Reviews"))
+
+
 import Products from "./pages/Products";
 import ProductDetails from "./pages/ProductDetails";
 import NotFound from "./pages/404";
@@ -33,9 +42,8 @@ function App() {
             <Route path="team" element={<Team />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
-          <Route path="/products" element={<Products />}>
-            <Route path=":productId" element={<ProductDetails />} />
-          </Route>
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:productId" element={<ProductDetails />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>
